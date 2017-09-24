@@ -1,0 +1,19 @@
+#Example
+target.component_name = 'Name'
+target.designation = 'Designation'
+design variables:
+[
+target.desVar1 = 0
+target.desVar2 = 0
+target.desVar3 = 0
+]
+calculated variables:
+[
+target.calcVar1 = target.desVar1 * 2 * target.desVar2
+target.calcVar2 = target.desVar3^^2
+]
+stress functions:
+[
+target.axial = target.calcVar1 * target.calcVar2
+]
+  

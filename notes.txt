@@ -1,0 +1,9 @@
+Current Work:
+-Build component template generator
+--Add in component identifier information
+
+Notes:
+
+-Redo input function to input to correct variables
+-Revise input file to use setattr()
+-Setup output functions for statistics
