@@ -22,7 +22,7 @@ class Member(object):
         self.assemblies = AssemblyManager()
 
         # --- Utility Variables --- #
-        self.bin_place = 6
+        self.bin_place = 6 "Better way to do this?"
 
     def attributeList(target):
         attr_list = [x for x in target.__dict__() if not x.startswith('__')]
