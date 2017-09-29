@@ -321,8 +321,8 @@ class StressEvaluator(Evaluator):
     def contact(self,target):
         pass
 
-class DeflectionEvaluator(Evaluator):
-    """Evaluates deflections on members, comparing them to component-defined
+class StrainEvaluator(Evaluator):
+    """Evaluates strain on members, comparing them to component-defined
         limits. Assigns fitness values based on the included equation and marks
         them as non-viable if limits are not achieved by the design."""
 

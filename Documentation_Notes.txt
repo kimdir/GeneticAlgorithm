@@ -1,12 +1,7 @@
 >> Documentation Notes
 
 Process Pages to do:
-Process Overview
-Initialization
-Evaluation
-Validation
-Selection
-Reproduction
+Statistics Output
 
 Class Pages to do:
 InitialMember
