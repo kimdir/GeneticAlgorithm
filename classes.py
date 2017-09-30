@@ -255,24 +255,7 @@ class Evaluator(object):
     """Generic Evaluator object. Modify this to modify all Evaluators."""
 
     def __init__(self):
-        self.evaluated_fitness = 0
-
-class FitnessEvaluator(Evaluator):
-    """Evaluates the fitness of members according to a minimum threshold that
-        shifts as generations increase."""
-
-        def __init__(self):
-            super.__init__()
-            self.threshold_mod = 0.02
-            self.threshold_offset = 100
-
-        def evaluate(self,PopManager):
-            gen_mod = (PopManager.StatManager.generation-self.threshold_offset)
-            fit_mod = self.threshold_mod*PopManager.StatManager.max_fitness
-            fitness_threshold = gen_mod * fit_mod
-            for mem in PopManager.pop_list:
-                if mem.fitness < fitness_threshold:
-                    mem.isViable = False
+        self.evaluated_fitness = 0.0
 
 class AgeEvaluator(Evaluator):
     """Evaluates age parameters, killing members that die of age and
@@ -291,6 +274,63 @@ class AgeEvaluator(Evaluator):
         if death_check < death_chance:
             target.isViable = False
         else: target.age += 1
+
+class CostEvaluator(Evaluator):
+    """Evaluates costs of components based on material and manufacturing
+        processes. Assigns fitness values based on the included equation."""
+
+    def __init__(self):
+        super.__init__()
+
+    def evaluate(self,target):
+        pass
+
+class DynamicsEvaluator(Evaluator):
+    """Evaluates dynamics of the design based on determined criteria. Assigns
+        fitness values based on the included equation and marks components as
+        non-viable if the criteria are not achieved by the design."""
+
+    def __init__(self):
+        super.__init__()
+
+    def evaluate(self,target):
+        pass
+
+class FitnessEvaluator(Evaluator):
+    """Evaluates the fitness of members according to a minimum threshold that
+        shifts as generations increase."""
+
+        def __init__(self):
+            super.__init__()
+            self.threshold_mod = 0.02
+            self.threshold_offset = 100
+
+        def evaluate(self,PopManager):
+            gen_mod = (PopManager.StatManager.generation-self.threshold_offset)
+            fit_mod = self.threshold_mod*PopManager.StatManager.max_fitness
+            fitness_threshold = gen_mod * fit_mod
+            for mem in PopManager.pop_list:
+                if mem.fitness < fitness_threshold:
+                    mem.isViable = False
+
+class FluidsEvaluator(Evaluator):
+    """Evaluates the fluid characteristics of a design."""
+
+    def __init__(self):
+        super.__init__()
+
+    def evaluate(self,target):
+        pass
+
+class MassEvaluator(Evaluator):
+    """Evaluates mass of components based on material and dimensions. Assigns
+        fitness values based on the included equation."""
+
+    def __init__(self):
+        super.__init__()
+
+    def evaluate(self,target):
+        pass
 
 class StressEvaluator(Evaluator):
     """Evaluates stresses on members. Assigns fitness values based on the
@@ -329,46 +369,6 @@ class StrainEvaluator(Evaluator):
     """Evaluates strain on members, comparing them to component-defined
         limits. Assigns fitness values based on the included equation and marks
         them as non-viable if limits are not achieved by the design."""
-
-    def __init__(self):
-        super.__init__()
-
-    def evaluate(self,target):
-        pass
-
-class CostEvaluator(Evaluator):
-    """Evaluates costs of components based on material and manufacturing
-        processes. Assigns fitness values based on the included equation."""
-
-    def __init__(self):
-        super.__init__()
-
-    def evaluate(self,target):
-        pass
-
-class MassEvaluator(Evaluator):
-    """Evaluates mass of components based on material and dimensions. Assigns
-        fitness values based on the included equation."""
-
-    def __init__(self):
-        super.__init__()
-
-    def evaluate(self,target):
-        pass
-
-class DynamicsEvaluator(Evaluator):
-    """Evaluates dynamics of the design based on determined criteria. Assigns
-        fitness values based on the included equation and marks components as
-        non-viable if the criteria are not achieved by the design."""
-
-    def __init__(self):
-        super.__init__()
-
-    def evaluate(self,target):
-        pass
-
-class FluidsEvaluator(Evaluator):
-    """Evaluates the fluid characteristics of a design."""
 
     def __init__(self):
         super.__init__()
