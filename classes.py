@@ -262,6 +262,7 @@ class FitnessEvaluator(Evaluator):
         shifts as generations increase."""
 
         def __init__(self):
+            super.__init__()
             self.threshold_mod = 0.02
             self.threshold_offset = 100
 
@@ -370,7 +371,7 @@ class FluidsEvaluator(Evaluator):
     """Evaluates the fluid characteristics of a design."""
 
     def __init__(self):
-        pass
+        super.__init__()
 
     def evaluate(self,target):
         pass
