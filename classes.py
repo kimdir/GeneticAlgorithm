@@ -127,15 +127,18 @@ class Breeder(object):
     """Contains the commands for member breeding."""
 
     def __init__(self):
+        # Population Requirement Modifiers
         self.base_mod = 0.2
         self.cycle_mod = 0
         self.pop_mod = 0
         self.growth_mod = self.base_mod * self.cycle_mod * self.pop_mod
         self.growth_rate = 1 + self.growth_mod
 
+        # Breeding Thresholds
         self.crossover_thresh = 0.6
         self.mutate_thresh = 0.8
 
+        # Factories
         self.MemberFactory = MemberFactory()
 
     def refreshMods(self,StatManager):

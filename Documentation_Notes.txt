@@ -4,10 +4,6 @@ Process Pages to do:
 Statistics Output
 
 Class Pages to do:
-InitialMember
-ChildMember
-Breeder
-
 Evaluator
 FitnessEvaluator
 StressEvaluator
@@ -39,3 +35,4 @@ StressVarManager
 MiscVarManager
 
 ComponentBuilder
+StatisticsManager
