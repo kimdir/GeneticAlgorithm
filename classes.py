@@ -35,7 +35,7 @@ class InitialMember(Member):
     def __init__():
         super.__init__()
 
-    def binaryEncode (value):
+    def binaryEncode(value):
     	"""Encodes a numerical value into a binary string"""
         #Values currently limited to integers, will consider decimals later
         bin_count = self.bin_place
@@ -417,7 +417,7 @@ class PopulationManager(object):
 
     def startup(self):
         while len(self.pop_list) < self.initial_population:
-            self.pop_list.append(self.Breeder.setup())
+            self.pop_list.append(self.Breeder.startup())
             print("Generated " + len(self.pop_list)) + " Members")
 
 class EvaluatorManager(object):
