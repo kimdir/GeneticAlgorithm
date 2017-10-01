@@ -4,21 +4,9 @@ Process Pages to do:
 Statistics Output
 
 Class Pages to do:
-Evaluator
-FitnessEvaluator
-StressEvaluator
-StrainEvaluator
-CostEvaluator
-MassEvaluator
-DynamicsEvaluator
-FluidsEvaluator
-
-FileManager
 PopulationManager
-EvaluatorManager
 PatientManager
 
-MemberFactory
 GeneticAlgorithm
 
 GenericComponent

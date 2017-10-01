@@ -405,7 +405,7 @@ class FileManager(object):
     def __init__(self,target):
         self.components_location = "component_list.txt"
 
-    def inputComponents(taget):
+    def inputComponents(target):
         while open(components_location) as compFile:
             for [line for line in iter(compFile) if line.startswith('target.')]:
                 eval(line)
