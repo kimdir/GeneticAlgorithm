@@ -332,6 +332,17 @@ class MassEvaluator(Evaluator):
     def evaluate(self,target):
         pass
 
+class StrainEvaluator(Evaluator):
+    """Evaluates strain on members, comparing them to component-defined
+        limits. Assigns fitness values based on the included equation and marks
+        them as non-viable if limits are not achieved by the design."""
+
+    def __init__(self):
+        super.__init__()
+
+    def evaluate(self,target):
+        pass
+
 class StressEvaluator(Evaluator):
     """Evaluates stresses on members. Assigns fitness values based on the
         included equation and marks them as non-viable if the Factor
@@ -363,17 +374,6 @@ class StressEvaluator(Evaluator):
         pass
 
     def contact(self,target):
-        pass
-
-class StrainEvaluator(Evaluator):
-    """Evaluates strain on members, comparing them to component-defined
-        limits. Assigns fitness values based on the included equation and marks
-        them as non-viable if limits are not achieved by the design."""
-
-    def __init__(self):
-        super.__init__()
-
-    def evaluate(self,target):
         pass
 
 # ---------- Manager Classes ---------- #
