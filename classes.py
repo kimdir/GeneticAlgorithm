@@ -378,6 +378,27 @@ class StressEvaluator(Evaluator):
 
 # ---------- Manager Classes ---------- #
 
+class EvaluatorManager(object):
+    """Manages creation of singleton evaluators and contains the evaluate call
+        which triggers each evaluator."""
+
+    def __init__(self):
+        self.Age = AgeEvaluator()
+        self.Cost = CostEvaluator()
+        self.Dynamics = DynamicsEvaluator()
+        self.Fitness = FitnessEvaluator()
+        self.Fluids = FluidsEvaluator()
+        self.Mass = MassEvaluator()
+        self.Stress = StressEvaluator()
+        self.Strain = StrainEvaluator()
+
+    def evaluate(self,target):
+        for [x for x in dir(self) if not x.startswith("__")]:
+            current_evaluator = getattr(self,x)
+            current_evaluator.evaluate(target)
+            if target.isValid == False:
+                break
+
 class FileManager(object):
     """Manages file input/output functions."""
 
@@ -423,26 +444,6 @@ class PopulationManager(object):
         while len(self.pop_list) < self.initial_population:
             self.pop_list.append(self.Breeder.startup())
             print("Generated " + len(self.pop_list)) + " Members")
-
-class EvaluatorManager(object):
-    """Manages creation of singleton evaluators and contains the evaluate call
-        which triggers each evaluator."""
-
-    def __init__(self):
-        self.Age = AgeEvaluator()
-        self.Stress = StressEvaluator()
-        self.Deflection = DeflectionEvaluator()
-        self.Cost = CostEvaluator()
-        self.Mass = MassEvaluator()
-        self.Dynamics = DynamicsEvaluator()
-        self.Fluids = FluidsEvaluator()
-
-    def evaluate(self,target):
-        for [x for x in dir(self) if not x.startswith("__")]:
-            current_evaluator = getattr(self,x)
-            current_evaluator.evaluate(target)
-            if target.isValid == False:
-                break
 
 class PatientManager(object):
     """Manages patient data, such as limb length and height."""
