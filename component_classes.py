@@ -12,7 +12,7 @@ class GenericComponent(object):
         # Evaluation
         self.mass = 0 # kg
         self.cost = 0 # $
-        self.viable = True
+        self.isViable = True
 
         # Genetics
         self.design_variables = DesVarManager()
@@ -46,7 +46,7 @@ class GenericCylinder(GenericComponent):
         all actuation cylinder components"""
 
     def __init__(self):
-        GenericComponent.__init__()
+        super.__init__()
         self.movementType = ""
         self.maxForce = 0 # N
         self.isCylinder = True
@@ -56,7 +56,7 @@ class GenericStructure(GenericComponent):
         all structural components."""
 
     def __init__(self):
-        GenericComponent.__init__()
+        super.__init__()
         self.maxStress = 0 # MPa
         self.maxDeflection = 0 # m
         self.FOS = 0
@@ -67,10 +67,12 @@ class GenericFastener(GenericComponent):
         categorization."""
 
     def __init__(self):
-        GenericComponent.__init__()
+        super.__init__()
         self.isFastener = True
 
 # ---------- Generic Location Components ---------- #
+
+# Legacy code; Consider removal
 
 class GenericLocation(object):
     """Generic Location object. Modify this to change all location objects."""

@@ -450,6 +450,16 @@ class PatientManager(object):
 
     def __init__(self):
         pass
+
+    def savePatient(self):
+        pass
+
+    def loadPatient(self):
+        pass
+
+    def inputPatient(self):
+        pass
+    
 # ---------- Factory Classes ---------- #
 
 class MemberFactory(object):

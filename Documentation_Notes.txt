@@ -5,11 +5,9 @@ Statistics Output
 
 Class Pages to do:
 PopulationManager
-PatientManager
 
 GeneticAlgorithm
 
-GenericComponent
 GenericCylinder
 GenericStructure
 GenericFastener
