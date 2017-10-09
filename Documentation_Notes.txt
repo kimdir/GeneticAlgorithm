@@ -8,13 +8,6 @@ PopulationManager
 
 GeneticAlgorithm
 
-GenericCylinder
-GenericStructure
-GenericFastener
-
-ComponentManager
-AssemblyManager
-VarManager
 DesVarManager
 CalcVarManager
 StressVarManager
