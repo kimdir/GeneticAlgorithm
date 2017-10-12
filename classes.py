@@ -414,7 +414,7 @@ class FileManager(object):
         pass
 
 class PopulationManager(object):
-    """Manages the population including calculating relevant information.""""
+    """Manages the population including calculating relevant information."""
 
     def __init__(self):
         #Population Variables

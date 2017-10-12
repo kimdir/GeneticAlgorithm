@@ -4,14 +4,8 @@ Process Pages to do:
 Statistics Output
 
 Class Pages to do:
-PopulationManager
 
 GeneticAlgorithm
-
-DesVarManager
-CalcVarManager
-StressVarManager
-MiscVarManager
 
 ComponentBuilder
 StatisticsManager
