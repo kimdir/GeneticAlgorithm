@@ -171,8 +171,17 @@ class CalcVarManager(VarManager):
     """Manages calculated variables, including equations for calculations."""
 
     def __init__(self):
-        pass
-
+        CVEquations = {}
+        
+    def calculate(self):
+    """Sets calculated variables based on the equations given in the component file.
+        Var should be a string name for the variable and eq should be the equation for 
+        the function written in Python notation and including class names in the 
+        variables."""
+        
+        for var,eq in self.CVEquations:
+            setattr(self,var,eval(eq))
+            
 class StressVarManager(VarManager):
     """Manages stress variables, to be determined after calculated variables
         are evaluated."""
