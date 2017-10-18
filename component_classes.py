@@ -173,11 +173,12 @@ class CalcVarManager(VarManager):
     def __init__(self):
         CVEquations = {}
         
-    def calculate(self):
+    def calculate(self,DVM):
     """Sets calculated variables based on the equations given in the component file.
         Var should be a string name for the variable and eq should be the equation for 
         the function written in Python notation and including class names in the 
-        variables."""
+        variables. Takes the DesValManager of the component to reduce character load
+        in the component files."""
         
         for var,eq in self.CVEquations:
             setattr(self,var,eval(eq))
