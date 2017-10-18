@@ -131,6 +131,12 @@ class GenericDistal(GenericLocation):
 
 
 # ---------- Assembly Components ---------- #
+class Assembly(self):
+    """Generic assembly that holds references to the components that are a part of the
+    assembly. Used for informational purposes primarily."""
+    
+    def __init__(self):
+        self.components = {}
 
 # ---------- Manager Classes ---------- #
 
@@ -150,7 +156,10 @@ class AssemblyManager(object):
         functional units."""
 
     def __init__(self):
-        pass
+        self.assemblyList = []
+
+    def addAssembly(self,name):
+        self.assemblyList.append
 
 class VarManager(object):
     """Defines the general variable manager for storing variables. Used for
