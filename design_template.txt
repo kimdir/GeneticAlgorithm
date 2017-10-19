@@ -1,4 +1,10 @@
-“””Template File for a design component, including example entries  
+## Template File for a design component, including example entries.
+## 
+## Prefixes:
+## Level 1 Headings: #
+## Level 2 Headings: -
+## Comments: ##
+##
 
 # Identifiers
 ## Values that identify the component as an individual and as part of an assembly. 
@@ -10,7 +16,7 @@ Assembly Name: HipActuation
 IsCylinder
 
 # Boolean Identifiers
-## Standard 
+## Standard identifiers for components, used primarily for informational purposes.
 IsAnterior
 IsProximal
 
@@ -20,6 +26,32 @@ IsProximal
 
 InnerDiameter
 CylinderLength
+CylinderInnerDiameter
+CylinderOuterDiameter
+PistonLength
 
 # Calculated Variables
-## V
+## Variables in this category are calculated based on design variables and should be 
+## entered as equations with the DVM. Prefix on all design variable callouts.
+
+CylinderThickness = DVM.CylinderOuterDiameter  - DVM.CylinderInnerDiameter
+BaseThickness = DVM.CylinderThickness
+
+# Stress Variables
+## Variables here are used in the unified stress evaluation methods. Stress identifiers are set
+## by reading section titles and corresponding calculations are located under each section
+## title. DVM prefixes should point to DesVarManager, and CVM should point to the 
+## CalcVarManager
+
+- Axial
+PistonArea = (DVM.CylinderInnerDiameter/2)**2 * math.pi()
+
+# Misc Variables
+## Variables in this category do not fall into the above categories but are still used by some 
+## processes. Section should be checked regularly to see if variables can be grouped into a 
+## better category for code clarity. Section titles should be used here as well. DVM, CVM, SVM
+## reference Des, Calc, and StressVarManager respectively.
+
+- Fluids
+BoreVolume = math.pi() * DVM.CylinderInnerDiameter / 4 * (DVM.CylinderLength - DVM.PistonLength) 
+
