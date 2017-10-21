@@ -1,4 +1,6 @@
-    """Defines individual components and the Components class."""
+import ast
+"""Defines individual components and the Components class."""
+
 
 # ---------- Variable Type Classes ---------- #
 
@@ -134,7 +136,7 @@ class GenericDistal(GenericLocation):
 class Assembly(self):
     """Generic assembly that holds references to the components that are a part of the
     assembly. Used for informational purposes primarily."""
-    
+
     def __init__(self):
         self.components = {}
 
@@ -166,7 +168,18 @@ class VarManager(object):
         categorization."""
 
     def __init__(self):
-        pass
+        variables = {}
+
+    def calculate(target,EqDict,DVM,CVM,SVM):
+    """Sets calculated variables based on the equations given in the component file.
+        Var should be a string name for the variable and eq should be the equation for
+        the function written in Python notation and including class names in the
+        variables. Takes the DesValManager, CalcVarManager, StressVarManager of the component to reduce character load
+        in the component files."""
+
+        for var,eq in EqDict.items():
+            target.variables[var] = (eval(compile(ast.parse(str3,mode="eval"),'<ast>',mode='eval')))
+        return
 
 class DesVarManager(VarManager):
     """Manages design variables. These are the only ones that should be changed
@@ -181,17 +194,7 @@ class CalcVarManager(VarManager):
 
     def __init__(self):
         CVEquations = {}
-        
-    def calculate(self,DVM):
-    """Sets calculated variables based on the equations given in the component file.
-        Var should be a string name for the variable and eq should be the equation for 
-        the function written in Python notation and including class names in the 
-        variables. Takes the DesValManager of the component to reduce character load
-        in the component files."""
-        
-        for var,eq in self.CVEquations:
-            setattr(self,var,eval(eq))
-            
+
 class StressVarManager(VarManager):
     """Manages stress variables, to be determined after calculated variables
         are evaluated."""
