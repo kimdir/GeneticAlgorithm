@@ -17,8 +17,7 @@ Component Name: AnteriorHipFlex
 Assembly Name: HipActuation
 IsCylinder
 
-# Boolean Identifiers
-## Standard identifiers for components, used primarily for informational purposes.
+## Boolean identifiers for components, used primarily for informational purposes.
 IsAnterior
 IsProximal
 

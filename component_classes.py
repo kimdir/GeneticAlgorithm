@@ -201,7 +201,10 @@ class CalcVarManager(VarManager):
     """Manages calculated variables, including equations for calculations."""
 
     def __init__(self):
-        CVEquations = {}
+        self.CVEquations = {}
+
+    def updateEquations(self,EqDict):
+        self.CVEquations = EqDict
 
 class StressVarManager(VarManager):
     """Manages stress variables, to be determined after calculated variables
