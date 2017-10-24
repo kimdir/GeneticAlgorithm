@@ -1,5 +1,5 @@
 ## Template File for a design component, including example entries.
-## 
+##
 ## Prefixes:
 ## Level 1 Headings: #
 ## Level 2 Headings: -
@@ -7,10 +7,12 @@
 ##
 
 # Identifiers
-## Values that identify the component as an individual and as part of an assembly. 
+## Values that identify the component as an individual and as part of an assembly.
 ## Identifiers are read after the space following the colon. Includes Boolean
 ## identifiers that contribute to class creation.
+## New components identified by the Component ID tag.
 
+Component ID : 0
 Component Name: AnteriorHipFlex
 Assembly Name: HipActuation
 IsCylinder
@@ -31,7 +33,7 @@ CylinderOuterDiameter
 PistonLength
 
 # Calculated Variables
-## Variables in this category are calculated based on design variables and should be 
+## Variables in this category are calculated based on design variables and should be
 ## entered as equations with the DVM. Prefix on all design variable callouts.
 
 CylinderThickness = DVM.CylinderOuterDiameter  - DVM.CylinderInnerDiameter
@@ -40,18 +42,17 @@ BaseThickness = DVM.CylinderThickness
 # Stress Variables
 ## Variables here are used in the unified stress evaluation methods. Stress identifiers are set
 ## by reading section titles and corresponding calculations are located under each section
-## title. DVM prefixes should point to DesVarManager, and CVM should point to the 
+## title. DVM prefixes should point to DesVarManager, and CVM should point to the
 ## CalcVarManager
 
 - Axial
 PistonArea = (DVM.CylinderInnerDiameter/2)**2 * math.pi()
 
 # Misc Variables
-## Variables in this category do not fall into the above categories but are still used by some 
-## processes. Section should be checked regularly to see if variables can be grouped into a 
+## Variables in this category do not fall into the above categories but are still used by some
+## processes. Section should be checked regularly to see if variables can be grouped into a
 ## better category for code clarity. Section titles should be used here as well. DVM, CVM, SVM
 ## reference Des, Calc, and StressVarManager respectively.
 
 - Fluids
-BoreVolume = math.pi() * DVM.CylinderInnerDiameter / 4 * (DVM.CylinderLength - DVM.PistonLength) 
-
+BoreVolume = math.pi() * DVM.CylinderInnerDiameter / 4 * (DVM.CylinderLength - DVM.PistonLength)

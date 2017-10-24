@@ -154,8 +154,8 @@ class ComponentManager(object):
 
     def addComponent(self,component):
         if not component.name in self.components:
+            assert(component.ID == self.componentID)
             self.components[component.name] = component
-            component.ID = self.componentID
             componentID = componentID + 1
 
 class AssemblyManager(object):
@@ -223,40 +223,7 @@ class ComponentBuilder(object):
     """Builds components from user input."""
 
     def __init__(self):
-        self.file_name = 'component_list.txt'
-        self.component_names = []
-
-        self.name_label = 'target.component_name = '
-        self.desig_label = 'target.designation = '
-        self.tgt = 'target.'
-        self.des_var_header = '#design variables:'
-        self.calc_var_header = '#calculated variables:'
-        self.stress_var_header = '#stress variables:'
-
-    def addComponent(self):
-        """Prompts the user for information needed to create a new component,
-            then formats and saves the component to the component_list file."""
-
-        # Collect new component information
-        self.comp_name = input("Component Name: ")
-        self.comp_desig = input("Designation: ")
-
-        self.des_var_count = input("How many design variables? ")
-        self.des_vars = self.defineVariables(self.des_var_count,"design")
-
-        self.calc_var_count = input("How many calculated variables? ")
-        self.calc_vars = self.defineVariables(self.calc_var_count,"calculated")
-
-        self.stress_func_count = input("How many stress functions? ")
-        self.stress_funcs = self.defineVariables(self.stress_func_count,"stress")
-
-        self.misc_var_count = input("How many misc vars? ")
-        self.misc_vars = self.defineVariables(self.misc_var_count,"misc")
-
-        # Write information to component_list file in correct format
-
-
-        self.refereshComponents()
+        pass
 
     def refereshComponents(self):
         self.component_names = []
@@ -264,24 +231,3 @@ class ComponentBuilder(object):
             name_lines = [x for x in comp_file.readlines if x.startswith('target.component_name')]
             for n in name_lines:
                 self.component_names.append(n.split()[2])
-
-    def defineVariables(self,count,var_type):
-        x = 0
-        holder = []
-        while x < count:
-            if var_type == "design":
-                var_name = input("Variable Name: ")
-                holder.append(str(self.target_label + var_name))
-            elif var_type == "calculated":
-                var_name = str(input("Variable Name: "))
-                var_eq = str(input("Variable Equation:"))
-                holder.append(str(var_name + " = " + var_eq))
-            elif var_type == "stress":
-                stress_type = str(input("Stress Type: "))
-                stress_params = str(input("Enter parameters separated by commas:"))
-                holder.append(str(var_name + " = " + var_eq))
-            elif var_type == "misc":
-                holder.append(input("Variable Name: "))
-            else: input("Bad variable classification")
-            x += 1
-        return holder
