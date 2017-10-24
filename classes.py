@@ -1,4 +1,4 @@
-"""Defines the classes used in the genetic algorithm."""
+    """Defines the classes used in the genetic algorithm."""
 import component_classes
 import random
 
@@ -404,11 +404,14 @@ class FileManager(object):
 
     def __init__(self,target):
         self.components_location = "component_list.txt"
+        self.format_dict = {'#','Header 1','-','Header 2','##','Comment'}
 
     def inputComponents(target):
         while open(components_location) as compFile:
-            for [line for line in iter(compFile) if line.startswith('target.')]:
-                eval(line)
+            for [line for line in iter(compFile)]:
+                for [word for word in line.split()]:
+                    if word in self.format_dict:
+
 
     def outputGenStats():
         pass
@@ -459,7 +462,7 @@ class PatientManager(object):
 
     def inputPatient(self):
         pass
-    
+
 # ---------- Factory Classes ---------- #
 
 class MemberFactory(object):
