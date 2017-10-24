@@ -1,16 +1,16 @@
 import ast
 """Defines individual components and the Components class."""
 
-
-# ---------- Variable Type Classes ---------- #
-
 # ---------- Generic Type Classes ---------- #
 
 class GenericComponent(object):
     """Generic component class for defining common attributes. Modify this to
         change attributes common to all components."""
 
-    def __init__(self):
+    def __init__(self,name):
+
+        self.name = name
+
         # Evaluation
         self.mass = 0 # kg
         self.cost = 0 # $
@@ -130,15 +130,17 @@ class GenericDistal(GenericLocation):
         self.isDistal = True
 
 # ---------- Assemblies ---------- #
-
-
-# ---------- Assembly Components ---------- #
 class Assembly(self):
     """Generic assembly that holds references to the components that are a part of the
     assembly. Used for informational purposes primarily."""
 
-    def __init__(self):
+    def __init__(self,name,ID):
         self.components = {}
+        self.name = name
+        self.ID = ID
+
+    def addComponent(self,component):
+        self.components[component.name]
 
 # ---------- Manager Classes ---------- #
 
@@ -147,21 +149,27 @@ class ComponentManager(object):
         inheritance in member creation."""
 
     def __init__(self):
-        # Femur Location Components #
+        self.components = {}
+        self.componentID = 0
 
-        # Tibia Location Components #
-
-        # Foot Location Components #
+    def addComponent(self,component):
+        if not component.name in self.components:
+            self.components[component.name] = component
+            component.ID = self.componentID
+            componentID = componentID + 1
 
 class AssemblyManager(object):
     """Container describing all assemblies of components. Gives overview of
         functional units."""
 
     def __init__(self):
-        self.assemblyList = []
+        self.assemblies = {}
+        self.assemblyID = 0
 
     def addAssembly(self,name):
-        self.assemblyList.append
+        if not name in self.assemblies:
+            self.assemblies[name] = Assembly(name,assemblyID)
+            assemblyID = assemblyID + 1
 
 class VarManager(object):
     """Defines the general variable manager for storing variables. Used for
