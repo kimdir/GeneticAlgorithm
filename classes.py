@@ -404,14 +404,58 @@ class FileManager(object):
 
     def __init__(self,target):
         self.components_location = "component_list.txt"
-        self.format_dict = {'#','Header 1','-','Header 2','##','Comment'}
+        self.format_dict = ['#','-']
 
     def inputComponents(target):
-        while open(components_location) as compFile:
-            for [line for line in iter(compFile)]:
-                for [word for word in line.split()]:
-                    if word in self.format_dict:
+        """Takes a component template file and parses the text into the variableDicts
+            dictionary to be exported to a component builder."""
 
+        # Method variables.
+        stressIndex = {1:'axial',2:'shear',3:'bending',4:'torsion',5:'buckling',6:'pressure',7:'contact'}
+        stressDicts = {'axial':{},'shear':{},'bending':{},'torsion':{},'buckling':{},'pressure':{},'contact'{}}
+        variableDicts = {1:{},2:{},3:{},4:stressDicts,5:{}] #Identifiers, DesVars, CalcVars, StressVars, MiscVars
+        dictIndex = -1
+        subIndex = -1
+
+        while open(components_location) as compFile:
+
+            # Iterate through lines of text, checking headers.
+            for [line for line in iter(compFile)]:
+                if line.startswith("##"): # Skips comment lines
+                    continue
+                if line.startswith('#'): #Change dictionaries with Heading 1 lines
+                    dictIndex = dictIndex + 1
+                    subIndex = -1 # Reset subdict index
+                    continue
+                if line.startswith('-') # Change subdict index
+                    subIndex = subIndex + 1
+                    continue
+                tempKey = ''
+                tempVal = ''
+                keyFlag = True
+
+                # Cycle through lines of text and assign strings appropriately
+                for [word for word in line.split()]:
+                    if word == '=':
+                        keyFlag = False
+                        continue
+                    if keyFlag == True:
+                        tempKey = tempKey + word
+                        if tempKey.endswith(':'):
+                            tempKey = tempKey[:-1]
+                            keyFlag = False
+                            continue
+                    else:
+                        tempVal = tempVal + word
+
+                    # Copy value to appropriate dictionary
+                    if type(variableDicts(dictIndex))=='dict':
+                        variableDicts[dictIndex][tempKey] = tempVal
+                    if type(variableDicts(dictIndex)) == 'list' and dictIndex == 4:
+                        variableDicts[dictIndex][stressIndex[subIndex][tempKey] = tempVal
+                    else
+                        raise TypeError
+        return variableDicts
 
     def outputGenStats():
         pass
